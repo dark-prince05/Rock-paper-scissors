@@ -8,3 +8,30 @@ let getHumanChoice = () => {
   let choice = prompt(`What's your choice "rock", "paper", "scissors"`);
   return choice;
 };
+
+let humanScore = 0;
+let computerScore = 0;
+
+let playRound = (humanChoice, computerChoice) => {
+  humanChoice = humanChoice.toLowerCase();
+  if (humanChoice === "rock" && computerChoice === "paper") {
+    console.log("You lose! Paper beats Rock");
+    computerScore++;
+  } else if (humanChoice === "paper" && computerChoice === "scissors") {
+    console.log("You lose! Scissors beats Paper");
+    computerScore++;
+  } else if (humanChoice === "scissors" && computerChoice === "rock") {
+    console.log("You lose! Rock beats Scissors");
+    computerScore++;
+  } else if (humanChoice === computerChoice) {
+    console.log("Draw! Both are Equal");
+  } else {
+    console.log("You win! ");
+    humanScore++;
+  }
+};
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);

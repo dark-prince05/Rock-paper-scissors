@@ -31,7 +31,20 @@ let playRound = (humanChoice, computerChoice) => {
   }
 };
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let playGame = (round) => {
+  for (let i = 0; i < round; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+    playRound(humanSelection, computerSelection);
+  }
+  if (humanScore > computerScore) {
+    alert("You won the game!");
+  } else if (humanScore === computerScore) {
+    alert("It's a draw");
+  } else {
+    alert("You lost! try again");
+  }
+};
+
+playGame(5);

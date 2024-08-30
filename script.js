@@ -12,7 +12,9 @@ let getComputerChoice = () => {
 let play = () => {
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      playRound(e.target.id, getComputerChoice());
+      if (computerScore < 5 && humanScore < 5) {
+        playRound(e.target.id, getComputerChoice());
+      }
     });
   });
 };
@@ -20,21 +22,26 @@ let play = () => {
 let playRound = (humanChoice, computerChoice) => {
   const box = document.querySelector("#body");
   const winnerResult = document.querySelector("#result");
+  const playerPoint = document.querySelector("#playerScore");
+  const computerPoint = document.querySelector("#computerScore");
   if (humanChoice === "rock" && computerChoice === "paper") {
     winnerResult.textContent = "You lose! Paper beats Rock";
     computerScore++;
+    computerPoint.textContent = computerScore;
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
     winnerResult.textContent = "You lose! Scissors beats Paper";
     computerScore++;
+    computerPoint.textContent = computerScore;
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
     winnerResult.textContent = "You lose! Rock beats Scissors";
     computerScore++;
+    computerPoint.textContent = computerScore;
   } else if (humanChoice === computerChoice) {
     winnerResult.textContent = "Draw! Both are Equal";
   } else {
     winnerResult.textContent = "You win! ";
     humanScore++;
+    playerPoint.textContent = humanScore;
   }
-  box.appendChild(winnerresult);
 };
 play();

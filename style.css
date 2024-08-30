@@ -24,6 +24,9 @@ button {
   border: 10px solid;
   background-color: #16cedb50;
   width: 600px;
-  padding-bottom: 40px;
   margin: 80px auto;
+}
+
+#result {
+  font-size: 30px;
 }

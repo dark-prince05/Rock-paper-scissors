@@ -1,50 +1,40 @@
+const buttons = document.querySelectorAll("button");
+
+let humanScore = 0;
+let computerScore = 0;
+
 let getComputerChoice = () => {
   let choices = ["rock", "paper", "scissors"];
   let choice = Math.floor(Math.random() * 3);
   return choices[choice];
 };
 
-let getHumanChoice = () => {
-  let choice = prompt(`What's your choice "rock", "paper", "scissors"`);
-  return choice;
+let play = () => {
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      playRound(e.target.id, getComputerChoice());
+    });
+  });
 };
-
-let humanScore = 0;
-let computerScore = 0;
 
 let playRound = (humanChoice, computerChoice) => {
-  humanChoice = humanChoice.toLowerCase();
+  const box = document.querySelector("#body");
+  const winnerResult = document.querySelector("#result");
   if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("You lose! Paper beats Rock");
+    winnerResult.textContent = "You lose! Paper beats Rock";
     computerScore++;
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("You lose! Scissors beats Paper");
+    winnerResult.textContent = "You lose! Scissors beats Paper";
     computerScore++;
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("You lose! Rock beats Scissors");
+    winnerResult.textContent = "You lose! Rock beats Scissors";
     computerScore++;
   } else if (humanChoice === computerChoice) {
-    console.log("Draw! Both are Equal");
+    winnerResult.textContent = "Draw! Both are Equal";
   } else {
-    console.log("You win! ");
+    winnerResult.textContent = "You win! ";
     humanScore++;
   }
+  box.appendChild(winnerresult);
 };
-
-let playGame = (round) => {
-  for (let i = 0; i < round; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-  }
-  if (humanScore > computerScore) {
-    alert("You won the game!");
-  } else if (humanScore === computerScore) {
-    alert("It's a draw");
-  } else {
-    alert("You lost! try again");
-  }
-};
-
-playGame(5);
+play();

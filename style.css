@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+button {
+  font-size: 20px;
+  padding: 5px 20px;
+  width: 150px;
+}
+
+.score {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+#scoreBoard {
+  display: flex;
+  justify-content: space-around;
+}
+
+#body {
+  border: 10px solid;
+  background-color: #16cedb50;
+  width: 600px;
+  padding-bottom: 40px;
+  margin: 80px auto;
+}

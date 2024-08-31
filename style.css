@@ -20,11 +20,12 @@ button {
   justify-content: space-around;
 }
 
-#body {
+#container {
   border: 10px solid;
   background-color: #16cedb50;
   width: 600px;
   margin: 80px auto;
+  height: 350px;
 }
 
 #result {

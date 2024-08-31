@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll("button");
 const body = document.querySelector("#container");
 const res = document.querySelector("#result");
+const pScore = document.querySelector("#playerScore");
+const cScore = document.querySelector("#computerScore");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -14,7 +16,7 @@ let getComputerChoice = () => {
 let initiate = () => {
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      if (computerScore < 1 && playerScore < 1) {
+      if (computerScore < 5 && playerScore < 5) {
         play(e.target.id);
       } else {
         visibleStatus();
@@ -56,15 +58,10 @@ let playRound = (playerChoice, compChoice) => {
 };
 
 let play = (playerChoice) => {
-  const pScore = document.querySelector("#playerScore");
-  const cScore = document.querySelector("#computerScore");
-
   let result = playRound(playerChoice, getComputerChoice());
   res.textContent = result;
   pScore.textContent = playerScore;
   cScore.textContent = computerScore;
-  if (playerScore >= 5 || computerScore >= 5) {
-  }
 };
 
 let visibleStatus = () => {
@@ -74,11 +71,20 @@ let visibleStatus = () => {
   const playBtn = document.createElement("button");
   playBtn.textContent = "Play again?";
   finalResult.textContent =
-    playerScore === 1 ? `Yay! You won the match` : `Oh no! you lost the match`;
+    playerScore === 5 ? `Yay! You won the match` : `Oh no! you lost the match`;
   finalResult.setAttribute(
     "style",
     "display:flex; flex-direction:column; align-items:center; gap:30px; font-size:35px ",
   );
   finalResult.style.visibility = "visible";
   finalResult.appendChild(playBtn);
+
+  playBtn.addEventListener("click", () => {
+    visibility.style.visibility = "visible";
+    finalResult.textContent = "";
+    pScore.textContent = "0";
+    cScore.textContent = "0";
+    computerScore = 0;
+    playerScore = 0;
+  });
 };
